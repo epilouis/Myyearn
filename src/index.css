@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 280 100% 8%;
+    --foreground: 300 15% 95%;
+
+    --card: 280 50% 12%;
+    --card-foreground: 300 15% 95%;
+
+    --popover: 280 50% 12%;
+    --popover-foreground: 300 15% 95%;
+
+    --primary: 270 100% 65%;
+    --primary-foreground: 280 100% 8%;
+
+    --secondary: 285 100% 85%;
+    --secondary-foreground: 280 100% 8%;
+
+    --muted: 280 30% 20%;
+    --muted-foreground: 300 10% 70%;
+
+    --accent: 320 100% 75%;
+    --accent-foreground: 280 100% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 280 30% 25%;
+    --input: 280 30% 25%;
+    --ring: 270 100% 65%;
+
+    /* Custom purple theme colors */
+    --purple-deep: 280 100% 8%;
+    --purple-dark: 275 80% 20%;
+    --purple-medium: 270 100% 65%;
+    --purple-light: 285 100% 85%;
+    --purple-glow: 270 100% 80%;
+    
+    /* Gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(280, 100%, 15%), hsl(300, 100%, 25%), hsl(320, 100%, 35%));
+    --gradient-subtle: linear-gradient(180deg, hsl(280, 100%, 8%), hsl(275, 80%, 12%));
+    --gradient-heart: linear-gradient(45deg, hsl(320, 100%, 75%), hsl(300, 100%, 85%));
+    
+    /* Shadows and effects */
+    --shadow-romantic: 0 20px 60px -10px hsl(270, 100%, 65%, 0.3);
+    --shadow-glow: 0 0 40px hsl(270, 100%, 80%, 0.4);
+    --shadow-heart: 0 5px 20px hsl(320, 100%, 75%, 0.5);
+    
+    /* Animations */
+    --transition-romantic: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-romantic);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Typography */
+  .font-romantic {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-elegant {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Heart animations */
+  .heart {
+    position: absolute;
+    font-size: 1.2rem;
+    color: hsl(var(--accent));
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(var(--shadow-heart));
+  }
+
+  .heart:nth-child(2n) {
+    animation-delay: -2s;
+    animation-duration: 8s;
+  }
+
+  .heart:nth-child(3n) {
+    animation-delay: -4s;
+    animation-duration: 7s;
+  }
+
+  /* Romantic effects */
+  .romantic-glow {
+    box-shadow: var(--shadow-romantic);
+    backdrop-filter: blur(20px);
+  }
+
+  .love-letter {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+  }
+
+  /* Typewriter effect */
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--accent));
+    white-space: nowrap;
+    animation: typing 0.1s steps(1) forwards, blink-caret 1s step-end infinite;
+  }
+}
+
+@layer utilities {
+  /* Animation keyframes */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+      opacity: 0.7;
+    }
+    25% {
+      transform: translateY(-20px) rotate(5deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-40px) rotate(-5deg);
+      opacity: 0.8;
+    }
+    75% {
+      transform: translateY(-20px) rotate(3deg);
+      opacity: 1;
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: hsl(var(--accent));
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes pulse-romantic {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary), 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary), 0.6);
+    }
+  }
+
+  /* Utility classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-pulse-romantic {
+    animation: pulse-romantic 2s ease-in-out infinite;
+  }
+}
